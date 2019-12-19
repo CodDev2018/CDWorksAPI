@@ -58,14 +58,24 @@ class Portfolio extends Model {
 
   static async search(query, limit, offset) {
     let where = {}
+    where.userId = query.userId
     if (query.title) where.title = {
       [Op.like]: `%${query.title}%`
     }
-    return await Portfolio.findAndCountAll({
+    const  {rows, count} = await Portfolio.findAndCountAll({
       where: where,
       limit: limit < 100 && limit > 0 ? limit : 20,
       offset: offset
     })
+
+    return {
+      entities: rows,
+      meta: {
+        count: count,
+        limit: limit,
+        offset: offset
+      }
+    }
   }
 
   static async get(id) {

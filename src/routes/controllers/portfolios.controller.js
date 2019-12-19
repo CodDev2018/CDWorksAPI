@@ -7,11 +7,24 @@ class PortfolioController extends ResourceController{
         this.setModel(Portfolio)
     }
 
+    async index(req, res, next) {
+        req.query.userId = req.params.userId
+        return await super.index(req, res, next)
+    }
+
     async update(req, res, next) {
         if (req.file) {
             req.body.pic = req.protocol + '://' + req.headers.host + '/uploads/' + req.file.filename
         }
         return await super.update(req, res, next)
+    }
+
+    async store(req, res, next) {
+        console.log(req)
+        if (req.file) {
+            req.body.pic = req.protocol + '://' + req.headers.host + '/uploads/' + req.file.filename
+        }
+        return await super.store(req, res, next)
     }
 }
 

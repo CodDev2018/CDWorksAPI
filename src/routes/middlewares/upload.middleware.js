@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
 })
 
 const fileFilter = (req, file, cb) => {
-    cb(null, (file.mimetyope === 'image/jpg' || file.mimetype === 'image/png'))
+    cb(null, (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png'))
 }
 
 const upload = multer({

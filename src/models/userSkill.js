@@ -99,14 +99,13 @@ class UserSkill extends Model {
       '',
       'Iniciante',
       'Intermediário',
-      'Avaçnado'
+      'Avançado'
     ]
-    console.log(values)
     return {
       id: values.id,
       skillId: values.Skill ? values.Skill.dataValues.id : '',
       name: values.Skill ? values.Skill.dataValues.name : '',
-      lavel: values.level,
+      level: values.level,
       levelName: levels[values.level]
     }
   }

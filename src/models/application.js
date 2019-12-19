@@ -84,7 +84,7 @@ class Application extends Model {
     if (query.jobId) where.jobId = query.jobId
     if (query.freelancerId) where.userId = query.freelancerId
     
-    const {rows, count} = await Application.findAndCountAll({
+    const rows = await Application.findAll({
       where: where,
       limit: limit,
       offset: offset,
@@ -114,6 +114,12 @@ class Application extends Model {
           ]
         }
       ]
+    })
+
+    const count = await Application.count({
+      where: where,
+      limit: limit,
+      offset: offset
     })
 
     return {

@@ -30,9 +30,9 @@ router.get('/:userId/portfolios', verifyAccessToken, PortfolioController.bindMet
 //PORTFOLIO SHOW
 router.get('/:userId/portfolios/:id', verifyAccessToken, PortfolioController.bindMethod('show'));
 //PORTFOLIO STORE
-router.post('/:userId/portfolios', onlyAllowsOwner, PortfolioController.bindMethod('store'));
+router.post('/:userId/portfolios', upload.single('pic'), onlyAllowsOwner, PortfolioController.bindMethod('store'));
 //PORTFOLIO UPDATE
-router.patch('/:userId/portfolios/:id', onlyAllowsOwner, upload.single('pic'), PortfolioController.bindMethod('update'));
+router.patch('/:userId/portfolios/:id', upload.single('pic'), onlyAllowsOwner, PortfolioController.bindMethod('update'));
 //PORTFOLIO REMOVE
 router.delete('/:userId/portfolios/:id', onlyAllowsOwner, PortfolioController.bindMethod('remove'));
 

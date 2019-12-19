@@ -3,6 +3,7 @@ const errorRes = require('../responses/error.response')
 
 module.exports = async (req, res, next) => {
     try {
+        console.log(req)
         if(!req.headers['x-access-token']) {
             return errorRes(res, 400, 'O header [x-access-token] deve ser informado.')
         }
@@ -10,6 +11,7 @@ module.exports = async (req, res, next) => {
         req.body.token = await User.verifyToken(req.headers['x-access-token'])
         req.body.userId = parseInt(req.body.token.id)
         req.body.user = await User.get(req.body.userId)
+
 
         if (!req.body.user) {
             return errorRes(res, 400, 'Usuário não encontrado.')
