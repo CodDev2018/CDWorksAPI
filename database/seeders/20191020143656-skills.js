@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.bulkInsert('Skills', [{
+  up: (queryInterface, Sequelize) => queryInterface.bulkInsert('skills', [{
       name: 'JavaScript'
     },
     {
@@ -45,5 +45,5 @@ module.exports = {
     },
   ], {}),
 
-  down: (queryInterface, Sequelize) =>  queryInterface.bulkDelete('Skills', null, {})
+  down: (queryInterface, Sequelize) =>  queryInterface.bulkDelete('skills', null, {})
 };
