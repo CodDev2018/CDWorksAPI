@@ -15,11 +15,10 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "username": "user_cdworks",
+    "password": "teste123",
+    "database": "cdworks",
+    "host": "db.paulobezerra.eti.br",
+    "dialect": "mariadb"
   }
 }
